@@ -7,7 +7,7 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import (QApplication, QMainWindow)
 from help import Ui_Dialog as helpDialog
 from about import Ui_about as aboutDialog
-import helptext
+import helptext, utilities
 
 class App(QMainWindow):
 	def __init__(self):
@@ -16,6 +16,10 @@ class App(QMainWindow):
 		self.version = '0.0'
 		self.setWindowTitle('Parallel Port Configuration Tool Version {}'.format(self.version))
 		self.show()
+		self.setup()
+
+	def setup(self):
+		self.nameLE.textChanged.connect(utilities.onConfigNameChanged)
 
 
 	# Auto connected menu action callbacks
