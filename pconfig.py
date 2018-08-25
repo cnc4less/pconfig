@@ -47,6 +47,10 @@ class App(QMainWindow):
 		exit()
 
 	@pyqtSlot()
+	def on_actionGeneralHelp_triggered(self):
+		self.help(20)
+
+	@pyqtSlot()
 	def on_actionTabHelp_triggered(self):
 		self.help(self.tabWidget.currentIndex())
 
