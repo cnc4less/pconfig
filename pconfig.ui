@@ -35,7 +35,7 @@
        <rect>
         <x>19</x>
         <y>19</y>
-        <width>581</width>
+        <width>451</width>
         <height>121</height>
        </rect>
       </property>
@@ -47,19 +47,6 @@
         <widget class="QLabel" name="label">
          <property name="text">
           <string>Name</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="nameLE"/>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLabel" name="configPathLB">
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="text">
-          <string/>
          </property>
         </widget>
        </item>
@@ -78,7 +65,91 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QComboBox" name="unitsCB"/>
+        <widget class="QComboBox" name="units_cb"/>
+       </item>
+       <item row="2" column="2">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="1" colspan="2">
+        <widget class="QLabel" name="configPathLB">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QLineEdit" name="nameLE"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="gridGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>160</y>
+        <width>231</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Drive Timing</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Step Space</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="step_time_le"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Step Time</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Direction Setup</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Direction Hold</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="step_space_le"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="dir_setup_le"/>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="dir_hold_le"/>
+       </item>
+       <item row="4" column="0" colspan="2">
+        <widget class="QComboBox" name="drive_timing_cb"/>
        </item>
       </layout>
      </widget>

@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 
 import sys, platform
 from PyQt5 import uic, QtWidgets
@@ -7,20 +6,31 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import (QApplication, QMainWindow)
 from help import Ui_Dialog as helpDialog
 from about import Ui_about as aboutDialog
-import helptext, utilities
+import helptext, gui_utilities
 
-class App(QMainWindow):
+class MainWindow(QMainWindow):
 	def __init__(self):
-		super(App, self).__init__()
+		super().__init__()
 		uic.loadUi("pconfig.ui", self)
 		self.version = '0.0'
 		self.setWindowTitle('Parallel Port Configuration Tool Version {}'.format(self.version))
+
+		self.build_gui()
+		self.set_connections()
 		self.show()
-		self.setup()
 
-	def setup(self):
-		self.nameLE.textChanged.connect(utilities.onConfigNameChanged)
+	def build_gui(self):
+		gui_utilities.build_combos(self)
 
+	def set_connections(self):
+		self.nameLE.textChanged.connect(self.config_name_changed)
+		self.drive_timing_cb.currentIndexChanged.connect(self.drive_timing_changed)
+
+	def config_name_changed(self, text):
+		self.configPathLB.setText(gui_utilities.configPath(text))
+
+	def drive_timing_changed(self):
+		gui_utilities.set_drive_timing(self)
 
 	# Auto connected menu action callbacks
 	@pyqtSlot()
@@ -85,5 +95,5 @@ class App(QMainWindow):
 
 if __name__ == "__main__":
 	app = QApplication(sys.argv)
-	ex = App()
+	ex = MainWindow()
 	sys.exit(app.exec_())
