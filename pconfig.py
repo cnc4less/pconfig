@@ -25,12 +25,17 @@ class MainWindow(QMainWindow):
 	def set_connections(self):
 		self.nameLE.textChanged.connect(self.config_name_changed)
 		self.drive_timing_cb.currentIndexChanged.connect(self.drive_timing_changed)
+		self.latency_test_pb.clicked.connect(gui_utilities.latency_test)
+		self.latency_le.textChanged.connect(self.latency_changed)
 
 	def config_name_changed(self, text):
 		self.configPathLB.setText(gui_utilities.configPath(text))
 
 	def drive_timing_changed(self):
 		gui_utilities.set_drive_timing(self)
+
+	def latency_changed(self, text):
+		gui_utilities.minperiod(self)
 
 	# Auto connected menu action callbacks
 	@pyqtSlot()

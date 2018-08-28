@@ -1,4 +1,4 @@
-import os
+import os, subprocess
 
 def build_combos(parent):
 	# units combo
@@ -37,6 +37,24 @@ def set_drive_timing(parent):
 	parent.step_space_le.setText(data[1])
 	parent.dir_setup_le.setText(data[2])
 	parent.dir_hold_le.setText(data[3])
+
+
+def latency_test():
+	subprocess.call('latency-test')
+
+def minperiod(parent, steptime=None, stepspace=None, latency=None):
+	if parent.step_time_le.text() and parent.step_space_le.text():
+		if steptime is None: steptime = int(parent.step_time_le.text())
+		if stepspace is None: stepspace = int(parent.step_space_le.text())
+		if latency is None: latency = int(parent.latency_le.text())
+		if steptime <= 5000: # doublestep
+			min_period = max(latency + steptime + stepspace + 5000, 4*steptime)
+			max_hz = 1e9 / min_period
+		else:
+			min_period = latency + max(steptime, stepspace)
+			max_hz = 1e9 / min_period
+		parent.min_period_lb.setText('{} ns'.format(min_period))
+		parent.max_step_rate_lb.setText('{0:.0f} Hz'.format(max_hz))
 
 
 """
