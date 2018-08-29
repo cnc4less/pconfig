@@ -225,7 +225,7 @@
         <x>470</x>
         <y>10</y>
         <width>291</width>
-        <height>281</height>
+        <height>161</height>
        </rect>
       </property>
       <property name="title">
@@ -265,25 +265,11 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
-        <widget class="QRadioButton" name="lathe_back_tool_rb">
-         <property name="text">
-          <string>Back Tool Lathe</string>
-         </property>
-        </widget>
-       </item>
        <item row="2" column="1">
         <widget class="QComboBox" name="position_feedback_cb"/>
        </item>
        <item row="1" column="1">
         <widget class="QComboBox" name="position_offset_cb"/>
-       </item>
-       <item row="4" column="0">
-        <widget class="QRadioButton" name="lathe_front_tool_rb">
-         <property name="text">
-          <string>Front Tool Lathe</string>
-         </property>
-        </widget>
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_40">
@@ -302,7 +288,46 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="gridGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>170</y>
+        <width>171</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Machine Type</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="2" column="0">
+        <widget class="QRadioButton" name="lathe_back_tool_rb">
+         <property name="text">
+          <string>Back Tool Lathe</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QRadioButton" name="lathe_front_tool_rb">
+         <property name="text">
+          <string>Front Tool Lathe</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QRadioButton" name="mill_rb">
+         <property name="text">
+          <string>Mill</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
         <widget class="QRadioButton" name="foam_cutter_rb">
          <property name="text">
           <string>Foam Cutter</string>
@@ -311,11 +336,68 @@
        </item>
       </layout>
      </widget>
+     <widget class="QGroupBox" name="gridGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>469</x>
+        <y>239</y>
+        <width>271</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Optional Settings</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string>DRO Format</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="dro_format_le">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Follows the Python format&lt;/p&gt;&lt;p&gt;6.2 6 digits to the left and 2 decimal places&lt;/p&gt;&lt;p&gt;+3.3 force the plus sign with 3 left and 3 decimal places&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Axes</string>
+     </attribute>
     </widget>
     <widget class="QWidget" name="tab_1">
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>Spindle</string>
      </attribute>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>154</x>
+        <y>70</y>
+        <width>160</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Minimum Spindle Override</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>70</y>
+        <width>117</width>
+        <height>23</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

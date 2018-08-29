@@ -23,8 +23,28 @@ def build_combos(parent):
 	parent.drive_timing_cb.addItem('Hobbycnc', ['2000', '2000', '2000', '2000'])
 	parent.drive_timing_cb.addItem('Keling 4030', ['5000', '5000', '20000', '20000'])
 
+	# gui combo
+	parent.gui_cb.addItem('Select a GUI', False)
+	parent.gui_cb.addItem('Axis', 'axis')
+	parent.gui_cb.addItem('Touchy', 'touchy')
+	parent.gui_cb.addItem('Gmoccapy', 'gmoccapy')
+	parent.gui_cb.addItem('Gscreen', 'gscreen')
+	parent.gui_cb.addItem(' Mini', ' mini')
+	parent.gui_cb.addItem('tkLinuxCNC', 'tklinuxcnc')
 
+	# position offset combo position_offset_cb
+	parent.position_offset_cb.addItem('Relative', 'RELATIVE')
+	parent.position_offset_cb.addItem('Machine', 'MACHINE')
 
+	# position feedback combo
+	parent.position_feedback_cb.addItem('Commanded', 'COMMANDED')
+	parent.position_feedback_cb.addItem('Actual', 'ACTUAL')
+
+"""
+parent..addItem('', '')
+parent..addItem('', ['', ''])
+
+"""
 def configPath(text):
 	if not text:
 		return ''
