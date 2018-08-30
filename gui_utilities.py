@@ -40,6 +40,13 @@ def build_combos(parent):
 	parent.position_feedback_cb.addItem('Commanded', 'COMMANDED')
 	parent.position_feedback_cb.addItem('Actual', 'ACTUAL')
 
+	# parallel port type
+	parent.port_0_type_cb.addItem('None', False)
+	parent.port_0_type_cb.addItem('Out', 'out')
+	parent.port_0_type_cb.addItem('In', 'in')
+	parent.port_0_type_cb.addItem('EPP', 'epp')
+	parent.port_0_type_cb.addItem('X', 'x')
+
 """
 parent..addItem('', '')
 parent..addItem('', ['', ''])
@@ -57,6 +64,34 @@ def set_drive_timing(parent):
 	parent.step_space_le.setText(data[1])
 	parent.dir_setup_le.setText(data[2])
 	parent.dir_hold_le.setText(data[3])
+
+def port_0_setup(parent):
+	port_0_type = parent.port_0_type_cb.currentData()
+	blank = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+	dir_in = ['out', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in',
+		'in', 'in', 'in', 'in', 'in','out', 'out']
+	dir_out = ['out', 'out', 'out', 'out', 'out', 'out', 'out', 'out', 'out',
+		'in', 'in', 'in', 'in', 'out', 'in', 'out', 'out']
+	dir_x = ['in', 'out', 'out', 'out', 'out', 'out', 'out', 'out', 'out',
+		'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in']
+	pin_list = ''
+	if not port_0_type:
+		parent.port_0_gb.setEnabled(False)
+		pin_list = blank
+	elif port_0_type == 'out':
+		parent.port_0_gb.setEnabled(True)
+		pin_list = dir_out
+	elif port_0_type == 'in':
+		parent.port_0_gb.setEnabled(True)
+		pin_list = dir_in
+	elif port_0_type == 'epp':
+		parent.port_0_gb.setEnabled(True)
+		pin_list = dir_out
+	elif port_0_type == 'x':
+		parent.port_0_gb.setEnabled(True)
+		pin_list = dir_x
+	for index, item in enumerate(pin_list):
+		getattr(parent, 'dir_lb_' + str(index + 1)).setText(item)
 
 
 def latency_test():
@@ -77,36 +112,4 @@ def minperiod(parent, steptime=None, stepspace=None, latency=None):
 		parent.max_step_rate_lb.setText('{0:.0f} Hz'.format(max_hz))
 
 
-"""
 
-'None', False
-'Gecko 201', ['500', '4000', '20000', '1000']
-'Gecko 202', ['500', '4500', '20000', '1000']
-'Gecko 203v', ['1000', '2000', '200', '200']
-'Gecko 210', ['500', '4000', '20000', '1000']
-'Gecko 212', ['500', '4000', '20000', '1000']
-'Gecko 320', ['3500', '500', '200', '200']
-'Gecko 540', ['1000', '2000', '200', '200']
-'L297', ['500', '4000', '4000', '1000']
-'PMDX 150', ['1000', '2000', '1000', '1000']
-'Sherline', ['22000', '22000', '100000', '100000']
-'Xylotex BS-3', ['2000', '1000', '200', '200']
-'Parker 750', ['1000', '1000', '1000', '200000']
-'JVL SMD41/42', ['500', '500', '2500', '2500']
-'Hobbycnc', ['2000', '2000', '2000', '2000']
-'Keling 4030', ['5000', '5000', '20000', '20000']
-
-def set_connections(parent):
-	parent.nameLE.textChanged.connect(config_name_changed)
-
-
-def config_name_changed():
-
-
-	def build_gui():
-		gui_utilities.build_combos(self)
-		gui_utilities.set_connections(self)
-
-	def setup(self):
-		self.nameLE.textChanged.connect(self.config_name_changed)
-"""

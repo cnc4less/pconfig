@@ -12,7 +12,7 @@ class MainWindow(QMainWindow):
 	def __init__(self):
 		super().__init__()
 		uic.loadUi("pconfig.ui", self)
-		self.version = '0.0'
+		self.version = '0.0.2'
 		self.setWindowTitle('Parallel Port Configuration Tool Version {}'.format(self.version))
 
 		self.build_gui()
@@ -27,6 +27,7 @@ class MainWindow(QMainWindow):
 		self.drive_timing_cb.currentIndexChanged.connect(self.drive_timing_changed)
 		self.latency_test_pb.clicked.connect(gui_utilities.latency_test)
 		self.latency_le.textChanged.connect(self.latency_changed)
+		self.port_0_type_cb.currentIndexChanged.connect(self.port_0_type_changed)
 
 	def config_name_changed(self, text):
 		self.configPathLB.setText(gui_utilities.configPath(text))
@@ -36,6 +37,9 @@ class MainWindow(QMainWindow):
 
 	def latency_changed(self, text):
 		gui_utilities.minperiod(self)
+
+	def port_0_type_changed(self):
+		gui_utilities.port_0_setup(self)
 
 	# Auto connected menu action callbacks
 	@pyqtSlot()
