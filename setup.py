@@ -13,9 +13,16 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/jethornton/pconfig",
     packages=setuptools.find_packages(),
+    include_package_data=True,
+    package_data={'src': ['*.py', '*.ui']},
     classifiers=(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
         "Operating System :: OS Independent",
     ),
+     entry_points={
+          'gui_scripts': [
+              'pconfig = src.pconfig:MainWindow'
+          ]
+      },
 )

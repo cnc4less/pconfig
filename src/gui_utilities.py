@@ -92,6 +92,7 @@ def port_0_setup(parent):
 		pin_list = dir_x
 	for index, item in enumerate(pin_list):
 		getattr(parent, 'dir_lb_' + str(index + 1)).setText(item)
+		# build the pin combos based on the pin_list
 
 
 def latency_test():

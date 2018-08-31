@@ -3,3 +3,7 @@ __pycache__/
 *.pyc
 /old files
 *.txt
+build
+dist
+pconfig.egg-info
+
